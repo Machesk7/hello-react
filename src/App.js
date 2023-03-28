@@ -1,30 +1,63 @@
 import logo from './logo.svg';
 import './App.css';
-function MagicButton() {
+
+const clubs = [
+  {id: 1, name: 'Stealth 2', club_type: 'Driver', brand: 'Taylormade', user_rating: 'rated 8.7/10', majorityRecommended: true},
+  {id: 2, name: 'Paradym', club_type: 'Driver', brand: 'Callaway', user_rating: 'rated 8.9/10', majorityRecommended: true}, 
+  {id: 3, name: 'T100', club_type: 'Iron', brand: 'Titleist', user_rating: 'rated 9.4/10', majorityRecommended: true},
+  {id: 4, name: 'Stix Clubs', club_type: 'Full Set', brand: 'Stix', user_rating: 'rated 6.2/10', majorityRecommended: false},
+];
+
+function ClubTable () {
+  const listClubs = clubs.map(club =>
+    <li
+      key={club.id}
+      style={{
+        color: club.majorityRecommended ? 'green' : 'red'
+      }}
+    >
+      {club.name}, 
+      {club.brand}, 
+      {club.user_rating}, 
+      {club.club_type}  
+      
+    </li>
+    );
+    return (
+      <ul>{listClubs}</ul>
+    ) 
+}
+
+function GolfHeader() {
   return (
-    <button>Magic</button>
+    <>
+      <h2>Golf Equipment Database</h2>
+    </>
   )
 }
 
+function GolfDescription () {
+  return (
+    <h3>Latest inforomation on the game's hottest equipment</h3>
+  )
+}
+
+function GolfContact () {
+  return (
+    <p>To reach us, email us at golfinfo@email.com</p>
+  )
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Jack
-        </a>
+    
+        <GolfHeader/>
+        <GolfDescription/>
+        <ClubTable/>
       </header>
-      <MagicButton></MagicButton>
+      <GolfContact/>
     </div>
   );
 }
