@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {supabase} from '@supabase/supabase-js'
+import {supabase} from './supabaseClient';
 import { useState } from 'react';
 
 // A React component that queries and displays data from Supabase
@@ -23,11 +23,14 @@ function Library() {
     <table>
     {
       myBooks.map(b => (
+        <>
         <tr>
-          <td>{b.title}</td>
-          <td>{b.author}</td>
-          <td>{b.isbn}</td>
+          <td class = 'title'>{b.title}</td>
+          <td>{b.Author}</td>
+          <td>{b.ISBN}</td>
+          <td class = 'description'>{b.Description}</td>
         </tr>
+        </>
       ))
     }
     </table>
@@ -86,11 +89,11 @@ function App() {
     <div className="App">
       <header className="App-header">
     
-        <GolfHeader/>
-        <GolfDescription/>
-        <ClubTable/>
+      
+        <Library/>
+       
       </header>
-      <GolfContact/>
+      
     </div>
   );
 }
