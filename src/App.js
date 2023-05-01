@@ -7,28 +7,28 @@ import { useState } from 'react';
 function Library() {
   // The useState hook lets us store data in a component across renders
   // setMyBooks is a setter function that updates the state of myBooks
-  const [myBooks, setMyBooks] = useState([]);
+  const [myPrem, setMyPrem] = useState([]);
   // This should look familar from Codepen
-  async function getBooks() {
-    let { data: books, error } = await supabase
-      .from('books')
+  async function getPrem() {
+    let { data: Prem, error } = await supabase
+      .from('Prem')
       .select('*')
     // Update the state
-    setMyBooks(books);
+    setMyPrem(Prem);
   }
   // Execute the function
-  getBooks();
+  getPrem();
   // Below is what displays when you use <Library />
   return (
     <table>
     {
-      myBooks.map(b => (
+      myPrem.map(b => (
         <>
         <tr>
-          <td class = 'title'>{b.title}</td>
-          <td>{b.Author}</td>
-          <td>{b.ISBN}</td>
-          <td class = 'description'>{b.Description}</td>
+          <td class = 'title'>{b.Name}</td>
+          <td>{b.Wins}</td>
+          <td>{b.Mascot}</td>
+          <td class = 'description'>{b.Losses}</td>
         </tr>
         </>
       ))
